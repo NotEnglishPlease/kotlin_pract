@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.kotlin_pract.R
 import com.example.kotlin_pract.databinding.FragmentMainBinding
-import com.example.kotlin_pract.ui.favorite.FavoriteLocations
+import com.example.kotlin_pract.ui.favorite.FavoriteLocationsFragment
 
 
 class MainFragment : Fragment() {
@@ -38,7 +38,7 @@ class MainFragment : Fragment() {
         binding.buttonToFavourite.setOnClickListener {
             val fragmentManager = requireActivity().supportFragmentManager
             val transaction = fragmentManager.beginTransaction()
-            transaction.replace(R.id.container, FavoriteLocations())
+            transaction.replace(R.id.container, FavoriteLocationsFragment())
             transaction.addToBackStack(null)
             transaction.commit()
         }
