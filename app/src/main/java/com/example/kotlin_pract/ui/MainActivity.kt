@@ -1,9 +1,8 @@
-package com.example.kotlin_pract
+package com.example.kotlin_pract.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
+import com.example.kotlin_pract.R
 
 class MainActivity : AppCompatActivity() {
 

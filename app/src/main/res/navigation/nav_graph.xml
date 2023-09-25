@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/weekForecast"
-        android:name="com.example.kotlin_pract.WeekForecast"
+        android:name="com.example.kotlin_pract.ui.week.WeekForecast"
         android:label="fragment_week_forecast"
         tools:layout="@layout/fragment_week_forecast" />
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.kotlin_pract.MainFragment"
+        android:name="com.example.kotlin_pract.ui.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
