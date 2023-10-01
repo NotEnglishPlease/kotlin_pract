@@ -10,8 +10,8 @@ import com.example.kotlin_pract.data.CityRepository
 
 class MainViewModel(private val repository: CityRepository) : ViewModel() {
 
-    fun addCity(newCity: String) {
-        repository.addCity(city = City(newCity))
+    fun addCity(newCityName: String) {
+        repository.addCity(city = City(name = newCityName))
     }
 
     companion object {

@@ -4,9 +4,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.kotlin_pract.App
+import com.example.kotlin_pract.data.City
 import com.example.kotlin_pract.data.CityRepository
 
 class FavoriteLocationsViewModel(private val repository: CityRepository) : ViewModel() {
+
+    val cities = repository.cities
+    val favoriteCity = repository.favoriteCity
+
+    fun setFavoriteCity(city: City) {
+        repository.setFavorite(city)
+    }
 
     companion object {
 

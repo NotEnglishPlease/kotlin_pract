@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -32,7 +33,11 @@ class MainFragment : Fragment() {
             val newCity = binding.textInputEditText.text.toString().trim()
             if (newCity.isNotEmpty()) {
                 viewModel.addCity(newCity)
+                Toast.makeText(requireContext(), "Новый город добавлен - $newCity", Toast.LENGTH_SHORT)
+                    .show()
             }
+            binding.textInputEditText.setText("")
+            binding.textInputEditText.clearFocus()
         }
 
         binding.buttonToFavourite.setOnClickListener {

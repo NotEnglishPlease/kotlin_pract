@@ -8,6 +8,8 @@ import com.example.kotlin_pract.data.CityRepository
 
 class WeekForecastViewModel(private val repository: CityRepository) : ViewModel() {
 
+    val favoriteLocation = repository.favoriteCity
+
     companion object {
 
         val Factory: ViewModelProvider.Factory = object : ViewModelProvider.Factory {
