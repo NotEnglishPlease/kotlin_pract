@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WeekForecast">
+    tools:context=".ui.week.WeekForecastFragment">
 
     <TextView
         android:layout_width="match_parent"
+        android:id="@+id/forecastPlaceholderTextView"
         android:layout_height="match_parent"
-        android:text="Тут будет прогноз на неделю, дизайна пока нет"
         android:textColor="@color/blue"
-        android:textSize="50dp" />
+        android:textSize="50sp" />
 
 </FrameLayout>
