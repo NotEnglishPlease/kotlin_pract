@@ -10,11 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlin_pract.R
 import com.example.kotlin_pract.data.db.toCityUi
 import com.example.kotlin_pract.databinding.FragmentFavoriteLocationsBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FavoriteLocationsFragment : Fragment() {
     private lateinit var binding: FragmentFavoriteLocationsBinding
 
-    private val viewModel: FavoriteLocationsViewModel by viewModels { FavoriteLocationsViewModel.Factory }
+    private val viewModel: FavoriteLocationsViewModel by viewModels()
     private lateinit var adapter: FavoriteLocationsAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

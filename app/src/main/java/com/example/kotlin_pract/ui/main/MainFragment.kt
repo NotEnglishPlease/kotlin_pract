@@ -10,12 +10,14 @@ import androidx.navigation.fragment.findNavController
 import com.example.kotlin_pract.R
 import com.example.kotlin_pract.databinding.FragmentMainBinding
 import com.example.kotlin_pract.ui.favorite.FavoriteLocationsFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
-    val viewModel: MainViewModel by viewModels { MainViewModel.Factory }
+    val viewModel: MainViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

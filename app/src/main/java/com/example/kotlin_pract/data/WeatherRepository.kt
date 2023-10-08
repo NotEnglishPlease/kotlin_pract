@@ -6,8 +6,9 @@ import com.example.kotlin_pract.data.api.models.toEntity
 import com.example.kotlin_pract.data.db.WeatherDao
 import com.example.kotlin_pract.data.db.WeatherEntity
 import com.example.kotlin_pract.ui.favorite.CityUi
+import javax.inject.Inject
 
-class WeatherRepository(
+class WeatherRepository @Inject constructor(
     private val openWeatherMapApiService: OpenWeatherMapApiService,
     private val weatherDao: WeatherDao,
 ) {

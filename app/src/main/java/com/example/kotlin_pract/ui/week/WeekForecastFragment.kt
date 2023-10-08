@@ -9,13 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.kotlin_pract.R
 import com.example.kotlin_pract.databinding.FragmentWeekForecastBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class WeekForecastFragment : Fragment() {
 
     private lateinit var binding: FragmentWeekForecastBinding
 
-    private val viewModel: WeekForecastViewModel by viewModels { WeekForecastViewModel.Factory }
+    private val viewModel: WeekForecastViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
