@@ -1,10 +1,10 @@
 package com.example.kotlin_pract.ui.week
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.kotlin_pract.R
@@ -27,12 +27,24 @@ class WeekForecastFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.favoriteLocation.observe(viewLifecycleOwner) {
-            Log.d("AAA", "onViewCreated: ${it?.name}")
-            binding.forecastPlaceholderTextView.text = if (it != null && it.name.isNotEmpty()) {
-                getString(R.string.forecast_placeholder, it.name)
+        viewModel.favoriteLocation.observe(viewLifecycleOwner) { favoriteCity ->
+            if (favoriteCity != null) {
+                binding.apply {
+                    noFavoriteLocationTextView.isVisible = false
+                    cityNameTextView.text = favoriteCity.cityName
+
+                    currentWeatherTextView.text =
+                        getString(
+                            R.string.weather_description,
+                            favoriteCity.weatherDescription.capitalize()
+                        )
+
+                    temperatureTextView.text = getString(R.string.temperature, favoriteCity.temp)
+                    humidityTextView.text = getString(R.string.humidity, favoriteCity.humidity)
+                    pressureTextView.text = getString(R.string.pressure, favoriteCity.pressure)
+                }
             } else {
-                getString(R.string.favorite_not_found)
+                binding.noFavoriteLocationTextView.isVisible = true
             }
         }
     }

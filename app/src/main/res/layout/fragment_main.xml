@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:backgroundTint="@color/white"
-        android:text="Прогноз на неделю"
+        android:text="@string/current_weather"
         android:textColor="@color/blue"
         app:layout_constraintBottom_toTopOf="@+id/buttonToFavourite"
         app:layout_constraintEnd_toEndOf="parent"

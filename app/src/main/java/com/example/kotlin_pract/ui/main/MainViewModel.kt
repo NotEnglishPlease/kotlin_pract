@@ -3,15 +3,18 @@ package com.example.kotlin_pract.ui.main
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
+import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.kotlin_pract.App
-import com.example.kotlin_pract.data.City
-import com.example.kotlin_pract.data.CityRepository
+import com.example.kotlin_pract.data.WeatherRepository
+import kotlinx.coroutines.launch
 
-class MainViewModel(private val repository: CityRepository) : ViewModel() {
+class MainViewModel(private val repository: WeatherRepository) : ViewModel() {
 
     fun addCity(newCityName: String) {
-        repository.addCity(city = City(name = newCityName))
+        viewModelScope.launch {
+            repository.addNewCity(newCityName)
+        }
     }
 
     companion object {
@@ -25,7 +28,7 @@ class MainViewModel(private val repository: CityRepository) : ViewModel() {
                 // Get the Application object from extras
                 val application = checkNotNull(extras[APPLICATION_KEY])
                 return MainViewModel(
-                    (application as App).cityRepository,
+                    (application as App).weatherRepository,
                 ) as T
             }
         }

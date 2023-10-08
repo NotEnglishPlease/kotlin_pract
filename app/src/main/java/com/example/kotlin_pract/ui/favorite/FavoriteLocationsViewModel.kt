@@ -2,18 +2,20 @@ package com.example.kotlin_pract.ui.favorite
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.kotlin_pract.App
-import com.example.kotlin_pract.data.City
-import com.example.kotlin_pract.data.CityRepository
+import com.example.kotlin_pract.data.WeatherRepository
+import kotlinx.coroutines.launch
 
-class FavoriteLocationsViewModel(private val repository: CityRepository) : ViewModel() {
+class FavoriteLocationsViewModel(private val repository: WeatherRepository) : ViewModel() {
 
     val cities = repository.cities
-    val favoriteCity = repository.favoriteCity
 
-    fun setFavoriteCity(city: City) {
-        repository.setFavorite(city)
+    fun setFavoriteCity(city: CityUi) {
+        viewModelScope.launch {
+            repository.setFavorite(city)
+        }
     }
 
     companion object {
@@ -28,7 +30,7 @@ class FavoriteLocationsViewModel(private val repository: CityRepository) : ViewM
                 val application =
                     checkNotNull(extras[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY])
                 return FavoriteLocationsViewModel(
-                    (application as App).cityRepository,
+                    (application as App).weatherRepository,
                 ) as T
             }
         }

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlin_pract.R
+import com.example.kotlin_pract.data.db.toCityUi
 import com.example.kotlin_pract.databinding.FragmentFavoriteLocationsBinding
 
 class FavoriteLocationsFragment : Fragment() {
@@ -33,7 +34,7 @@ class FavoriteLocationsFragment : Fragment() {
         )
 
         viewModel.cities.observe(viewLifecycleOwner) { value ->
-            adapter.submitList(value)
+            adapter.submitList(value.map { it.toCityUi() })
             adapter.notifyDataSetChanged()
         }
         binding.favoriteCitiesRecyclerView.adapter = adapter

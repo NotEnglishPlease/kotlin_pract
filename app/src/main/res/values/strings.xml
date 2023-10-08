@@ -6,4 +6,9 @@
     <string name="add_city">Добавить город</string>
     <string name="forecast_placeholder">Здесь будет прогноз для города \"%1$s\"</string>
     <string name="favorite_not_found">Город не выбран</string>
+    <string name="weather_description">Текущая погода - %1$s</string>
+    <string name="temperature">Температура - %1$.1f по Цельсию</string>
+    <string name="humidity">Влажность - %1$d\%%</string>
+    <string name="pressure">Атмосферное давление - %1$d мм рт.с</string>
+    <string name="current_weather">Текущая погода</string>
 </resources>

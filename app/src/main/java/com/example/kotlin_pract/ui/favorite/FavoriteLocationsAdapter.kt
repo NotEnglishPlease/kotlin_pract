@@ -6,21 +6,20 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kotlin_pract.data.City
 import com.example.kotlin_pract.databinding.CityListItemBinding
 
 class FavoriteLocationsAdapter(
-    private val onFavoriteButtonClick: (City) -> Unit,
+    private val onFavoriteButtonClick: (CityUi) -> Unit,
     private val favoriteIcon: Drawable?,
     private val notFavoriteIcon: Drawable?,
-) : ListAdapter<City, FavoriteLocationsAdapter.CityViewHolder>(CityDiffUtil) {
+) : ListAdapter<CityUi, FavoriteLocationsAdapter.CityViewHolder>(CityDiffUtil) {
     class CityViewHolder(
         private val binding: CityListItemBinding,
-        private val onFavoriteButtonClick: (City) -> Unit,
+        private val onFavoriteButtonClick: (CityUi) -> Unit,
         private val favoriteIcon: Drawable?,
         private val notFavoriteIcon: Drawable?,
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(city: City) {
+        fun bind(city: CityUi) {
             binding.apply {
                 cityNameTextView.text = city.name
                 if (favoriteIcon != null && notFavoriteIcon != null) {
@@ -33,12 +32,12 @@ class FavoriteLocationsAdapter(
         }
     }
 
-    companion object CityDiffUtil : DiffUtil.ItemCallback<City>() {
-        override fun areItemsTheSame(oldItem: City, newItem: City): Boolean {
+    companion object CityDiffUtil : DiffUtil.ItemCallback<CityUi>() {
+        override fun areItemsTheSame(oldItem: CityUi, newItem: CityUi): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: City, newItem: City): Boolean {
+        override fun areContentsTheSame(oldItem: CityUi, newItem: CityUi): Boolean {
             return oldItem == newItem
         }
     }
