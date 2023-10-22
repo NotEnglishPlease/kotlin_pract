@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class WeekForecastViewModel @Inject constructor(repository: WeatherRepository) : ViewModel() {
+class CurrentWeatherViewModel @Inject constructor(repository: WeatherRepository) : ViewModel() {
 
     val favoriteLocation = repository.favoriteCity
 
