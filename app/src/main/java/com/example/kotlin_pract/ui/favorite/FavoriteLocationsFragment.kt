@@ -15,7 +15,6 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -27,10 +26,7 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.kotlin_pract.R
 import com.example.kotlin_pract.data.db.toCityUi
-import com.example.kotlin_pract.databinding.FragmentFavoriteLocationsBinding
 import com.example.kotlin_pract.ui.theme.WeatherTheme
 import dagger.hilt.android.AndroidEntryPoint
 
