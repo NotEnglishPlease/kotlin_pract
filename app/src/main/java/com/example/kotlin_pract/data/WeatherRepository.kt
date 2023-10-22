@@ -5,7 +5,7 @@ import com.example.kotlin_pract.data.api.OpenWeatherMapApiService
 import com.example.kotlin_pract.data.api.models.toEntity
 import com.example.kotlin_pract.data.db.WeatherDao
 import com.example.kotlin_pract.data.db.WeatherEntity
-import com.example.kotlin_pract.ui.favorite.CityUi
+import com.example.kotlin_pract.ui.favorite.CityUiState
 import javax.inject.Inject
 
 class WeatherRepository @Inject constructor(
@@ -38,7 +38,7 @@ class WeatherRepository @Inject constructor(
         }
     }
 
-    suspend fun setFavorite(city: CityUi) {
+    suspend fun setFavorite(city: CityUiState) {
         val oldFavorite = weatherDao.getFavoriteCityWeather()
         oldFavorite?.let {
             weatherDao.upsertWeather(it.copy(isFavorite = false))

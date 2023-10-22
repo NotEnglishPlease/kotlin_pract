@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">kotlin_pract</string>
+    <string name="home_screen_title">Главная</string>
+    <string name="favorite_screen_title">Избранное</string>
+    <string name="current_weather_screen_title">Погода</string>
+</resources>

@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(private val repository: WeatherRepository) : ViewModel() {
+class HomeViewModel @Inject constructor(private val repository: WeatherRepository) : ViewModel() {
 
     fun addCity(newCityName: String) {
         viewModelScope.launch {

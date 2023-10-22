@@ -1,9 +1,5 @@
 package com.example.kotlin_pract.ui.favorite
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,37 +17,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.unit.dp
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.example.kotlin_pract.data.db.toCityUi
-import com.example.kotlin_pract.ui.theme.WeatherTheme
-import dagger.hilt.android.AndroidEntryPoint
-
-@AndroidEntryPoint
-class FavoriteLocationsFragment : Fragment() {
-    private val viewModel: FavoriteLocationsViewModel by viewModels()
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
-        return ComposeView(requireContext()).apply {
-            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
-            setContent {
-                WeatherTheme {
-                    FavoriteLocationsScreen(viewModel = viewModel)
-                }
-            }
-        }
-    }
-}
 
 @Composable
-private fun FavoriteLocationsScreen(
-    viewModel: FavoriteLocationsViewModel
+fun FavoriteScreen(
+    viewModel: FavoriteViewModel
 ) {
     val cities by viewModel.cities.observeAsState()
     LazyColumn(
@@ -60,7 +31,7 @@ private fun FavoriteLocationsScreen(
         items(cities ?: emptyList()) {
             CityItem(
                 modifier = Modifier.fillMaxWidth(),
-                cityUi = it.toCityUi(),
+                cityUiState = it.toCityUi(),
                 onFavoriteButtonClick = viewModel::setFavoriteCity
             )
         }
@@ -70,20 +41,20 @@ private fun FavoriteLocationsScreen(
 @Composable
 fun CityItem(
     modifier: Modifier = Modifier,
-    cityUi: CityUi,
-    onFavoriteButtonClick: (CityUi) -> Unit
+    cityUiState: CityUiState,
+    onFavoriteButtonClick: (CityUiState) -> Unit
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
         modifier = modifier.padding(8.dp)
     ) {
-        Text(text = cityUi.name)
+        Text(text = cityUiState.name)
         IconButton(
-            onClick = { onFavoriteButtonClick(cityUi) }
+            onClick = { onFavoriteButtonClick(cityUiState) }
         ) {
             Icon(
-                if (cityUi.isFavorite) Icons.Default.Favorite else Icons.Outlined.FavoriteBorder,
+                if (cityUiState.isFavorite) Icons.Default.Favorite else Icons.Outlined.FavoriteBorder,
                 contentDescription = null
             )
         }

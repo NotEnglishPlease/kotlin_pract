@@ -1,6 +1,6 @@
 package com.example.kotlin_pract.ui.favorite
 
-data class CityUi(
+data class CityUiState(
     val id: Int,
     val name: String,
     val isFavorite: Boolean,

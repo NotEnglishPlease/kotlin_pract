@@ -1,9 +1,5 @@
 package com.example.kotlin_pract.ui.main
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -22,43 +18,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.example.kotlin_pract.R
-import com.example.kotlin_pract.ui.theme.WeatherTheme
-import dagger.hilt.android.AndroidEntryPoint
-
-
-@AndroidEntryPoint
-class MainFragment : Fragment() {
-
-    private val viewModel: MainViewModel by viewModels()
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
-        return ComposeView(requireContext()).apply {
-            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
-            setContent {
-                WeatherTheme {
-                    HomeScreen(
-                        viewModel = viewModel
-                    )
-                }
-            }
-        }
-    }
-}
 
 @Composable
-fun HomeScreen(viewModel: MainViewModel) {
+fun HomeScreen(viewModel: HomeViewModel) {
     var textFieldTextState by remember { mutableStateOf("") }
     Box(
         modifier = Modifier.fillMaxSize(),

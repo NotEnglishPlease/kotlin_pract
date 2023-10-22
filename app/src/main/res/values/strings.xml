@@ -1,14 +1,16 @@
 <resources>
     <string name="app_name">kotlin_pract</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="enter_city">Введите город</string>
-    <string name="add_city">Добавить город</string>
-    <string name="forecast_placeholder">Здесь будет прогноз для города \"%1$s\"</string>
-    <string name="favorite_not_found">Город не выбран</string>
-    <string name="weather_description">Текущая погода - %1$s</string>
-    <string name="temperature">Температура - %1$.1f по Цельсию</string>
-    <string name="humidity">Влажность - %1$d\%%</string>
-    <string name="pressure">Атмосферное давление - %1$d мм рт.с</string>
-    <string name="current_weather">Текущая погода</string>
+    <string name="enter_city" translatable="false">Введите город</string>
+    <string name="add_city" translatable="false">Добавить город</string>
+    <string name="forecast_placeholder" translatable="false">Здесь будет прогноз для города \"%1$s\"</string>
+    <string name="favorite_not_found" translatable="false">Город не выбран</string>
+    <string name="weather_description" translatable="false">Текущая погода - %1$s</string>
+    <string name="temperature" translatable="false">Температура - %1$.1f по Цельсию</string>
+    <string name="humidity" translatable="false">Влажность - %1$d\%%</string>
+    <string name="pressure" translatable="false">Атмосферное давление - %1$d мм рт.с</string>
+    <string name="current_weather" translatable="false">Текущая погода</string>
+    <string name="home_screen_title">Home</string>
+    <string name="favorite_screen_title">Favorite</string>
+    <string name="current_weather_screen_title">Current weather</string>
 </resources>

@@ -3,7 +3,7 @@ package com.example.kotlin_pract.data.db
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.kotlin_pract.ui.favorite.CityUi
+import com.example.kotlin_pract.ui.favorite.CityUiState
 
 @Entity(tableName = "weather")
 data class WeatherEntity(
@@ -16,8 +16,8 @@ data class WeatherEntity(
     @ColumnInfo(name = "is_favorite") val isFavorite: Boolean,
 )
 
-fun WeatherEntity.toCityUi(): CityUi {
-    return CityUi(
+fun WeatherEntity.toCityUi(): CityUiState {
+    return CityUiState(
         id = id,
         name = cityName,
         isFavorite = isFavorite

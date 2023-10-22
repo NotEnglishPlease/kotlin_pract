@@ -8,12 +8,12 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FavoriteLocationsViewModel @Inject constructor(private val repository: WeatherRepository) :
+class FavoriteViewModel @Inject constructor(private val repository: WeatherRepository) :
     ViewModel() {
 
     val cities = repository.cities
 
-    fun setFavoriteCity(city: CityUi) {
+    fun setFavoriteCity(city: CityUiState) {
         viewModelScope.launch {
             repository.setFavorite(city)
         }
