@@ -4,51 +4,99 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.kotlin_pract.R
-import com.example.kotlin_pract.databinding.FragmentMainBinding
-import com.example.kotlin_pract.ui.favorite.FavoriteLocationsFragment
+import com.example.kotlin_pract.ui.theme.WeatherTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
 
-    private lateinit var binding: FragmentMainBinding
-    val viewModel: MainViewModel by viewModels()
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        binding = FragmentMainBinding.inflate(layoutInflater)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.addCityButton.setOnClickListener {
-            val newCity = binding.textInputEditText.text.toString().trim()
-            if (newCity.isNotEmpty()) {
-                viewModel.addCity(newCity)
+        return ComposeView(requireContext()).apply {
+            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+            setContent {
+                WeatherTheme {
+                    HomeScreen(
+                        viewModel = viewModel
+                    )
+                }
             }
-            binding.textInputEditText.setText("")
-            binding.textInputEditText.clearFocus()
         }
+    }
+}
 
-        binding.buttonToFavourite.setOnClickListener {
-            val fragmentManager = requireActivity().supportFragmentManager
-            val transaction = fragmentManager.beginTransaction()
-            transaction.replace(R.id.container, FavoriteLocationsFragment())
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
+@Composable
+fun HomeScreen(viewModel: MainViewModel) {
+    var textFieldTextState by remember { mutableStateOf("") }
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.sky),
+            contentScale = ContentScale.Crop,
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize()
+        )
+        Card {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.padding(24.dp)
+            ) {
+                Text(
+                    text = stringResource(id = R.string.current_weather),
+                    fontSize = 34.sp
+                )
+                OutlinedTextField(
+                    value = textFieldTextState,
+                    onValueChange = { textFieldTextState = it.trim() },
+                    label = { Text(text = stringResource(id = R.string.enter_city)) }
+                )
+                Button(
+                    onClick = {
+                        if (textFieldTextState.isNotEmpty()) {
+                            viewModel.addCity(textFieldTextState)
+                            textFieldTextState = ""
+                        }
+                    }
+                ) {
+                    Text(text = stringResource(id = R.string.add_city))
+                }
+            }
 
-        binding.buttonToWeek.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_weekForecast)
         }
     }
 }

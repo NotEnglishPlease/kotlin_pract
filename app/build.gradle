@@ -84,12 +84,12 @@ dependencies {
     implementation(composeBom)
     androidTestImplementation(composeBom)
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0-alpha03")
+    implementation("androidx.compose.material3:material3:1.1.2")
 
     implementation "androidx.compose.runtime:runtime"
     implementation "androidx.compose.ui:ui"
     implementation "androidx.compose.foundation:foundation"
     implementation "androidx.compose.foundation:foundation-layout"
-    implementation "androidx.compose.material:material"
     implementation "androidx.compose.runtime:runtime-livedata"
     implementation "androidx.compose.ui:ui-tooling"
 
