@@ -14,6 +14,7 @@ class WeatherRepository @Inject constructor(
     private val openWeatherMapApiService: OpenWeatherMapApiService,
     private val weatherDao: WeatherDao,
 ) {
+
     val cities = weatherDao.getAllWeatherEntities()
     val favoriteCity = weatherDao.getFavoriteCityWeatherLiveData()
 

@@ -2,6 +2,7 @@ package com.example.kotlin_pract.di
 
 import android.content.Context
 import androidx.room.Room
+import androidx.work.WorkManager
 import com.example.kotlin_pract.data.api.OpenWeatherMapApiService
 import com.example.kotlin_pract.data.db.WeatherDatabase
 import com.squareup.moshi.Moshi
@@ -52,4 +53,7 @@ class AppModule {
     @Singleton
     @Provides
     fun provideWeatherDao(db: WeatherDatabase) = db.weatherDao()
+
+    @Provides
+    fun provideWorkManager(@ApplicationContext context: Context) = WorkManager.getInstance(context)
 }

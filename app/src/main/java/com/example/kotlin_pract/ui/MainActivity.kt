@@ -25,6 +25,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.work.Constraints
+import androidx.work.NetworkType
+import androidx.work.PeriodicWorkRequest
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
+import com.example.kotlin_pract.background.UpdateWeatherWorker
 import com.example.kotlin_pract.ui.screens.favorite.FavoriteScreen
 import com.example.kotlin_pract.ui.screens.favorite.FavoriteViewModel
 import com.example.kotlin_pract.ui.screens.home.HomeScreen
@@ -33,12 +39,29 @@ import com.example.kotlin_pract.ui.theme.WeatherTheme
 import com.example.kotlin_pract.ui.screens.week.CurrentWeatherScreen
 import com.example.kotlin_pract.ui.screens.week.CurrentWeatherViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var workManager: WorkManager
+
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val constraints = Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.CONNECTED)
+            .build()
+        val workRequest = PeriodicWorkRequestBuilder<UpdateWeatherWorker>(
+            PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS,
+            TimeUnit.MILLISECONDS
+        )
+            .setConstraints(constraints)
+            .build()
+        workManager.enqueue(workRequest)
 
         val bottomBarScreens = listOf(
             Screen.BottomBarScreen.Home,
