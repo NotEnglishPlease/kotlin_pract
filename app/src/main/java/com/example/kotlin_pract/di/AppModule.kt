@@ -54,6 +54,7 @@ class AppModule {
     @Provides
     fun provideWeatherDao(db: WeatherDatabase) = db.weatherDao()
 
+    @Singleton
     @Provides
     fun provideWorkManager(@ApplicationContext context: Context) = WorkManager.getInstance(context)
 }
