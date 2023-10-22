@@ -1,4 +1,4 @@
-package com.example.kotlin_pract.ui.favorite
+package com.example.kotlin_pract.ui.screens.favorite
 
 data class CityUiState(
     val id: Int,

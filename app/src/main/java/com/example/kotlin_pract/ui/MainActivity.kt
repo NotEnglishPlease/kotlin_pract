@@ -25,13 +25,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.kotlin_pract.ui.favorite.FavoriteScreen
-import com.example.kotlin_pract.ui.favorite.FavoriteViewModel
-import com.example.kotlin_pract.ui.main.HomeScreen
-import com.example.kotlin_pract.ui.main.HomeViewModel
+import com.example.kotlin_pract.ui.screens.favorite.FavoriteScreen
+import com.example.kotlin_pract.ui.screens.favorite.FavoriteViewModel
+import com.example.kotlin_pract.ui.screens.home.HomeScreen
+import com.example.kotlin_pract.ui.screens.home.HomeViewModel
 import com.example.kotlin_pract.ui.theme.WeatherTheme
-import com.example.kotlin_pract.ui.week.CurrentWeatherScreen
-import com.example.kotlin_pract.ui.week.CurrentWeatherViewModel
+import com.example.kotlin_pract.ui.screens.week.CurrentWeatherScreen
+import com.example.kotlin_pract.ui.screens.week.CurrentWeatherViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

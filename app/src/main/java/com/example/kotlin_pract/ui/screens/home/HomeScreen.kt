@@ -1,4 +1,4 @@
-package com.example.kotlin_pract.ui.main
+package com.example.kotlin_pract.ui.screens.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement

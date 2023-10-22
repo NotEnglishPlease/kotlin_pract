@@ -1,4 +1,4 @@
-package com.example.kotlin_pract.ui.main
+package com.example.kotlin_pract.ui.screens.favorite
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,11 +8,14 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val repository: WeatherRepository) : ViewModel() {
+class FavoriteViewModel @Inject constructor(private val repository: WeatherRepository) :
+    ViewModel() {
 
-    fun addCity(newCityName: String) {
+    val cities = repository.cities
+
+    fun setFavoriteCity(city: CityUiState) {
         viewModelScope.launch {
-            repository.addNewCity(newCityName)
+            repository.setFavorite(city)
         }
     }
 }

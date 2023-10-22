@@ -1,4 +1,4 @@
-package com.example.kotlin_pract.ui.week
+package com.example.kotlin_pract.ui.screens.week
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

@@ -3,7 +3,7 @@ package com.example.kotlin_pract.data.db
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.kotlin_pract.ui.favorite.CityUiState
+import com.example.kotlin_pract.ui.screens.favorite.CityUiState
 
 @Entity(tableName = "weather")
 data class WeatherEntity(

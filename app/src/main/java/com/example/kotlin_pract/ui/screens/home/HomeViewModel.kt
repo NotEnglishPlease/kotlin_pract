@@ -1,4 +1,4 @@
-package com.example.kotlin_pract.ui.week
+package com.example.kotlin_pract.ui.screens.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -7,15 +7,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
 @HiltViewModel
-class CurrentWeatherViewModel @Inject constructor(repository: WeatherRepository) : ViewModel() {
+class HomeViewModel @Inject constructor(private val repository: WeatherRepository) : ViewModel() {
 
-    val favoriteLocation = repository.favoriteCity
-
-    init {
+    fun addCity(newCityName: String) {
         viewModelScope.launch {
-            repository.updateWeather()
+            repository.addNewCity(newCityName)
         }
     }
 }

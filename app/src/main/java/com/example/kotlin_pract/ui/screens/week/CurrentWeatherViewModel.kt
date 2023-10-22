@@ -1,4 +1,4 @@
-package com.example.kotlin_pract.ui.favorite
+package com.example.kotlin_pract.ui.screens.week
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -7,15 +7,15 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+
 @HiltViewModel
-class FavoriteViewModel @Inject constructor(private val repository: WeatherRepository) :
-    ViewModel() {
+class CurrentWeatherViewModel @Inject constructor(repository: WeatherRepository) : ViewModel() {
 
-    val cities = repository.cities
+    val favoriteLocation = repository.favoriteCity
 
-    fun setFavoriteCity(city: CityUiState) {
+    init {
         viewModelScope.launch {
-            repository.setFavorite(city)
+            repository.updateWeather()
         }
     }
 }
